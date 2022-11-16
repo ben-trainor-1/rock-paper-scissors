@@ -1,6 +1,8 @@
 import java.util.Scanner;
 public class App {
 
+    public static int playerOneWinCount = 0, playerTwoWinCount = 0;
+
     public static void main(String[] args) throws Exception {
 
         // Intro text
@@ -103,6 +105,10 @@ public class App {
                 Thread.sleep(1000);
                 rpsCompareString(playerOneChoice, playerTwoChoice);
                 space(1);
+                Thread.sleep(750);
+                displayWinCount();
+
+                space(1);
 
             }
 
@@ -181,6 +187,7 @@ public class App {
                 (playerOneChoice.equals("scissors") && playerTwoChoice.equals("paper"))
         ) {
             System.out.println(Colors.ANSI_GREEN + "Player 1 wins!" + Colors.ANSI_RESET);
+            playerOneWinCount++;
         }
         // Player 2 wins
         else if (
@@ -189,11 +196,22 @@ public class App {
                 (playerTwoChoice.equals("scissors") && playerOneChoice.equals("paper"))
         ) {
             System.out.println(Colors.ANSI_GREEN + "Player 2 wins!" + Colors.ANSI_RESET);
+            playerTwoWinCount++;
         }
         else {
             System.out.println("Something went wrong.");
         }
         
+    }
+
+    public static void displayWinCount() {
+        System.out.println(Colors.ANSI_YELLOW + "Records" + Colors.ANSI_RESET
+                            + Colors.ANSI_CYAN + "\n\nPlayer 1 \n" + Colors.ANSI_RESET
+                                + "Wins: " + Colors.ANSI_GREEN + playerOneWinCount + Colors.ANSI_RESET 
+                                + "\t\tLosses: " + Colors.ANSI_RED + playerTwoWinCount + Colors.ANSI_RESET
+                            + Colors.ANSI_CYAN + "\n\nPlayer 2 \n" + Colors.ANSI_RESET
+                                + "Wins: " + Colors.ANSI_GREEN + playerTwoWinCount + Colors.ANSI_RESET 
+                                + "\t\tLosses: " + Colors.ANSI_RED + playerOneWinCount + Colors.ANSI_RESET);
     }
 
 
