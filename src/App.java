@@ -1,7 +1,10 @@
 import java.util.Scanner;
+import java.util.Random;
 public class App {
 
-    public static int playerOneWinCount = 0, playerTwoWinCount = 0;
+    private static int playerOneWinCount = 0, playerTwoWinCount = 0;
+
+    private static Scanner in = new Scanner(System.in);
 
     public static void main(String[] args) throws Exception {
 
@@ -11,8 +14,8 @@ public class App {
         space(1);
         
         // Necessary variables
-        Scanner in = new Scanner(System.in);
         String playerOneChoice, playerTwoChoice;
+        String play = "yes";
         boolean firstGame = true;
 
         // Game loop
@@ -29,54 +32,32 @@ public class App {
             }
             
             // Play if they answer yes
-            if (in.nextLine().toLowerCase().equals("yes")) {
+            play = in.nextLine();
+            play = play.toLowerCase();
+
+            if (play.equals("yes")) {
                 firstGame = false;
                 space(1);
 
                 // Choose rock paper or scissors and store in integers
+                // Player 1
                 System.out.println(Colors.ANSI_YELLOW + "Player 1" + Colors.ANSI_RESET + ", what do you choose?");
-                do {
+                playerOneChoice = rpsChoosing(false);
 
-                    playerOneChoice = in.nextLine().toLowerCase();
-
-                    if (!playerOneChoice.equals("rock") 
-                        && !playerOneChoice.equals("paper") 
-                        && !playerOneChoice.equals("scissors")
-                    ) {
-                        System.out.println("Please enter \"rock\", \"paper\", or \"scissors\".");
-                    }
-                    else {
-                        break;
-                    }
-
-                } while (true);
-
-                System.out.println(Colors.ANSI_PURPLE + "Excellent." + Colors.ANSI_RESET);
                 Thread.sleep(750);
+                System.out.println(Colors.ANSI_PURPLE + "Excellent." + Colors.ANSI_RESET);
                 space(1);
-    
+
+                // Player 2
                 System.out.println(Colors.ANSI_YELLOW + "Player 2" + Colors.ANSI_RESET + ", what do you choose?");
-                
-                do {
-                    
-                    playerTwoChoice = in.nextLine().toLowerCase();
+                playerTwoChoice = rpsChoosing(true);
 
-                    if (!playerTwoChoice.equals("rock") 
-                        && !playerTwoChoice.equals("paper") 
-                        && !playerTwoChoice.equals("scissors")
-                    ) {
-                        System.out.println("Please enter \"rock\", \"paper\", or \"scissors\".");
-                    }
-                    else {
-                        break;
-                    }
-
-                } while (true);
-
-                System.out.println(Colors.ANSI_PURPLE + "Excellent." + Colors.ANSI_RESET);
                 Thread.sleep(750);
+                System.out.println(Colors.ANSI_PURPLE + "Excellent." + Colors.ANSI_RESET);
                 space(1);
-    
+                
+                Thread.sleep(750);
+                
                 // Count down, reveal choices
                 System.out.print("Rock, ");
                 Thread.sleep(500);
@@ -114,13 +95,44 @@ public class App {
 
         } while (true);
 
-
-        in.close();
-
     }
 
-    public static void rpsGameLoop() {
-        
+    public static String rpsChoosing(boolean random) {
+        String playerChoice;
+
+        // 2 player game, no AI opponent
+        if (!random) {
+            do {
+
+                playerChoice = in.nextLine().toLowerCase();
+    
+                if (!playerChoice.equals("rock") 
+                    && !playerChoice.equals("paper") 
+                    && !playerChoice.equals("scissors")
+                ) {
+                    System.out.println("Please enter \"rock\", \"paper\", or \"scissors\".");
+                }
+                else {
+                    return playerChoice;
+                }
+    
+            } while (true);
+        }
+
+        // 1 player game, AI opponent
+        else {
+            Random rand = new Random();
+            switch (rand.nextInt(3)) {
+                case 0:     
+                    return "rock";
+                case 1:     
+                    return "paper";
+                case 2:     
+                    return "scissors";
+                default:    
+                    return null;
+            }
+        }
     }
 
     public static String rpsString(int rpsChoice) {
