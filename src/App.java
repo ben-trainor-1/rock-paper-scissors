@@ -6,14 +6,7 @@ public class App {
     public static void main(String[] args) throws Exception {
 
         // Intro text
-        System.out.println(
-                            "\nWelcome to the " + Colors.ANSI_PURPLE + "Rock-Paper-Scissors Dojo." + Colors.ANSI_RESET
-                            + Colors.ANSI_CYAN
-                            + "\n0: Rock"
-                            + "\n1: Paper"
-                            + "\n2: Scissors"
-                            + Colors.ANSI_RESET
-                            );
+        System.out.println("\nWelcome to the " + Colors.ANSI_PURPLE + "Rock-Paper-Scissors Dojo." + Colors.ANSI_RESET);
 
         space(1);
         
@@ -142,36 +135,8 @@ public class App {
             default: 
                 return null;
         }
-    }
 
-    // Compare choices of players using integers
-    // public static void rpsCompareInt(int playerOneChoice, int playerTwoChoice) {
-        
-    //     // Draw
-    //     if (playerOneChoice == playerTwoChoice) {
-    //         System.out.println(Colors.ANSI_CYAN + "It's a tie!" + Colors.ANSI_RESET);
-    //     }
-    //     // Player 1 wins
-    //     else if (
-    //             (playerOneChoice == 0 && playerTwoChoice == 2) ||
-    //             (playerOneChoice == 1 && playerTwoChoice == 0) ||
-    //             (playerOneChoice == 2 && playerTwoChoice == 1)
-    //     ) {
-    //         System.out.println(Colors.ANSI_GREEN + "Player 1 wins!" + Colors.ANSI_RESET);
-    //     }
-    //     // Player 2 wins
-    //     else if (
-    //             (playerTwoChoice == 0 && playerOneChoice == 2) ||
-    //             (playerTwoChoice == 1 && playerOneChoice == 0) ||
-    //             (playerTwoChoice == 2 && playerOneChoice == 1)
-    //     ) {
-    //         System.out.println(Colors.ANSI_GREEN + "Player 2 wins!" + Colors.ANSI_RESET);
-    //     }
-    //     else {
-    //         System.out.println("Something went wrong.");
-    //     }
-        
-    // }
+    }
 
     // Compare choices of players using Strings
     public static void rpsCompareString(String playerOneChoice, String playerTwoChoice) {
