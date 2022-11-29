@@ -135,20 +135,20 @@ public class App {
         }
     }
 
-    public static String rpsString(int rpsChoice) {
+    // public static String rpsString(int rpsChoice) {
 
-        switch (rpsChoice) {
-            case 0: 
-                return "rock";
-            case 1: 
-                return "paper";
-            case 2: 
-                return "scissors";
-            default: 
-                return null;
-        }
+    //     switch (rpsChoice) {
+    //         case 0: 
+    //             return "rock";
+    //         case 1: 
+    //             return "paper";
+    //         case 2: 
+    //             return "scissors";
+    //         default: 
+    //             return null;
+    //     }
 
-    }
+    // }
 
     // Compare choices of players using Strings
     public static void rpsCompareString(String playerOneChoice, String playerTwoChoice) {
